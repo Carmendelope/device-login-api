@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: device-login-api
+  labels:
+    cluster: management
+    component: device-login-api
+  namespace: nalej
+spec:
+  selector:
+    cluster: management
+    component: device-login-api
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    name: grpc
+    port: 6030
+    targetPort: 6030
+  - protocol: TCP
+    name: http
+    port: 6031
+    targetPort: 6031

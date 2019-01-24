@@ -1,0 +1,38 @@
+###
+# Device-login-api
+###
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    cluster: management
+    component: device-login-api
+  name: device-login-api
+  namespace: __NPH_NAMESPACE
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      cluster: management
+      component: device-login-api
+  template:
+    metadata:
+      labels:
+        cluster: management
+        component: device-login-api
+    spec:
+      containers:
+      - name: device-login-api
+        image: nalejregistry.azurecr.io/nalej/device-login-api:__NPH_VERSION
+        imagePullPolicy: Always
+        args:
+        - "run"
+        - "--debug"
+        - "--deviceManagerAddress=device-manager.nalej:6010"
+        - "--authxAddress=authx.nalej:8810"
+        securityContext:
+          runAsUser: 2000
+      imagePullSecrets:
+      - name: nalej-registry
