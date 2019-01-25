@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/nalej/device-api/cmd/device-api/commands"
-	"github.com/nalej/device-api/version"
+	"github.com/nalej/device-login-api/cmd/device-login-api/commands"
+	"github.com/nalej/device-login-api/version"
 )
 
 var MainVersion string
