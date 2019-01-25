@@ -28,7 +28,7 @@ pipeline {
             steps { container("golang") { stepGolangBinaryCompilation packagePath, appsList } }
         }
         stage("Publish image to Docker") {
-            // when { branch 'master' }
+            when { branch 'master' }
             steps { container("docker") { stepPublishToDocker packagePath, appsList, "nalej" } }
         }
     }
