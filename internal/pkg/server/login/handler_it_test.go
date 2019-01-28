@@ -66,6 +66,7 @@ var _ = ginkgo.Describe("Applications", func() {
 	})
 
 	ginkgo.Context("login", func() {
+
 		ginkgo.It("should be able to login", func() {
 
 			// add a group
@@ -98,9 +99,6 @@ var _ = ginkgo.Describe("Applications", func() {
 			gomega.Expect(loginResponse).NotTo(gomega.BeNil())
 
 		})
-	})
-
-	ginkgo.Context("login", func() {
 		ginkgo.It("should not be able to login, wrong api_key", func() {
 
 			// add a group
