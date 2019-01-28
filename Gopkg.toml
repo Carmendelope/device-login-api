@@ -10,13 +10,13 @@
   source = "https://github.com/fsnotify/fsnotify/archive/v1.4.7.tar.gz"
   name = "gopkg.in/fsnotify.v1"
 
-#[[constraint]]
-#    name="github.com/onsi/ginkgo"
-#    version="v1.6.0"
+[[constraint]]
+    name="github.com/onsi/ginkgo"
+    version="v1.6.0"
 
-#[[constraint]]
-#    name="github.com/onsi/gomega"
-#    version="v1.4.2"
+[[constraint]]
+    name="github.com/onsi/gomega"
+    version="v1.4.2"
 
 [[constraint]]
     name="github.com/nalej/derrors"
@@ -37,3 +37,7 @@
 [[constraint]]
     name="github.com/nalej/grpc-authx-go"
     version="v0.0.38"
+
+[[constraint]]
+  name = "github.com/google/uuid"
+  version = "1.0.0"
