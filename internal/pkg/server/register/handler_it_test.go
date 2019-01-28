@@ -18,7 +18,7 @@ import (
 )
 
 
-var _ = ginkgo.Describe("Applications", func() {
+var _ = ginkgo.Describe("Devices", func() {
 
 	var runIntegration = os.Getenv("RUN_INTEGRATION_TEST")
 
