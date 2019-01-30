@@ -368,6 +368,7 @@
     "github.com/nalej/grpc-authx-go",
     "github.com/nalej/grpc-device-login-api-go",
     "github.com/nalej/grpc-device-manager-go",
+    "github.com/nalej/grpc-organization-go",
     "github.com/nalej/grpc-utils/pkg/conversions",
     "github.com/nalej/grpc-utils/pkg/test",
     "github.com/nalej/grpc-utils/pkg/tools",
