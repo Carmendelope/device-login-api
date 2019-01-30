@@ -72,12 +72,10 @@ func (s * Service) LaunchGRPC() error {
 	if cErr != nil {
 		log.Fatal().Str("err", cErr.DebugReport()).Msg("cannot generate clients")
 	}
-	lis, err := net.Listen("tcp", fmt.Sprintf("%d", s.Configuration.Port))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", s.Configuration.Port))
 	if err != nil {
-		log.Fatal().Errs("failed to listen: %v", []error{err})
+		log.Fatal().Err(err).Msg("failed to listen")
 	}
-
-	log.Debug().Interface("clients", clients).Msg("clients")
 
 	// Create handlers
 	loginManager := login.NewManager(clients.authxManager)
@@ -91,6 +89,8 @@ func (s * Service) LaunchGRPC() error {
 	grpc_device_login_api_go.RegisterRegisterServer(grpcServer, registerHandler)
 
 	reflection.Register(grpcServer)
+	log.Info().Int("port", s.Configuration.Port).Msg("Launching gRPC server")
+
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatal().Errs("failed to serve: %v", []error{err})
 	}
