@@ -46,7 +46,7 @@ func (d * DeviceTestHelper) CreateDeviceGroup(organizationID string) *grpc_devic
 		OrganizationId: organizationID,
 		Name: "test group",
 		Enabled: true,
-		DeviceDefaultConnectivity: true,
+		DefaultDeviceConnectivity: true,
 	}
 }
 

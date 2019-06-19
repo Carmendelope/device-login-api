@@ -28,15 +28,15 @@
 
 [[constraint]]
     name="github.com/nalej/grpc-device-manager-go"
-    version="v0.0.1"
+    version="v0.0.14"
 
 [[constraint]]
     name="github.com/nalej/grpc-device-login-api-go"
-    version="v0.0.1"
+    version="v0.0.3"
 
 [[constraint]]
     name="github.com/nalej/grpc-authx-go"
-    version="v0.0.38"
+    version="v0.0.50"
 
 [[constraint]]
   name = "github.com/google/uuid"

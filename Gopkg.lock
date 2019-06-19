@@ -72,12 +72,12 @@
   version = "v2.0.0"
 
 [[projects]]
-  digest = "1:3f205994eb126e2b693709bc018879d3d6f70fbf12d6b211d149114dd92a5ab3"
+  digest = "1:cfdc08a44d4a20ba76521e370c464e9a3056154cbe939c8115f3f689b7eedc7a"
   name = "github.com/nalej/grpc-authx-go"
   packages = ["."]
   pruneopts = ""
-  revision = "533f5f500e1a23280c5204887b17dd7614cfc591"
-  version = "v0.0.38"
+  revision = "27c410c0c02716415a772e92832e9059a1c3e95a"
+  version = "v0.0.50"
 
 [[projects]]
   digest = "1:44f7426538411ea9f774f96e3b102decc9f549b188e55e29ecc15be69542a96b"
@@ -88,6 +88,14 @@
   version = "v0.0.30"
 
 [[projects]]
+  digest = "1:0bad099051ea5df46222752d38f98673d2ccec88ab40e30a9ec3d1473cbcd634"
+  name = "github.com/nalej/grpc-device-controller-go"
+  packages = ["."]
+  pruneopts = ""
+  revision = "a17911a9960d5b17ac0b40f4613a07258b831e69"
+  version = "v0.0.8"
+
+[[projects]]
   digest = "1:856391a26533c0a6fc8a0798631f2248838a703398580db0e044cb1ab96a2b9b"
   name = "github.com/nalej/grpc-device-go"
   packages = ["."]
@@ -96,20 +104,28 @@
   version = "v0.0.30"
 
 [[projects]]
-  digest = "1:e56cf19e814ecd2377ccb84f055b8fd78be79e5815374ccf48821e22889997c2"
+  digest = "1:c68fe5e88d6e4183ad39fbb2b3af6e3c310a586cfdd1bd34a1807a74ac556b2f"
   name = "github.com/nalej/grpc-device-login-api-go"
   packages = ["."]
   pruneopts = ""
-  revision = "c83753e61a4b52a7976c3cdeb491570e4a20bdd8"
-  version = "v0.0.1"
+  revision = "94a68d9f9c54892a0dae006dbb3cdf72651a7445"
+  version = "v0.0.3"
 
 [[projects]]
-  digest = "1:6d6490d22cfeecfe712c3700fd815ca6dce4a009a5f2a1050fb3692fed0c833b"
+  digest = "1:8bf6a4f61d120a58f7d0f5c623dfd0767ae7719fc98f9ebd12c0cd96205c6e12"
   name = "github.com/nalej/grpc-device-manager-go"
   packages = ["."]
   pruneopts = ""
-  revision = "759952862fb3ae0d6328fd307f05263a4aac081b"
-  version = "v0.0.2"
+  revision = "63520a6d8f6e6adaa2e49dcd0fd970eaf285e1de"
+  version = "v0.0.14"
+
+[[projects]]
+  digest = "1:e52a6409dee0debe0f68f7a1c77036d4120115ea1d1491ba93ebf109aa8bb50a"
+  name = "github.com/nalej/grpc-inventory-go"
+  packages = ["."]
+  pruneopts = ""
+  revision = "a1d4777aae66823379e4142489016a40559e3bd0"
+  version = "v0.0.24"
 
 [[projects]]
   digest = "1:9921e275160e1559963d6452a918027db3563746fd03f63369ab104c0fbf16bf"
