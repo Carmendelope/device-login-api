@@ -149,7 +149,6 @@
   packages = [
     "pkg/conversions",
     "pkg/test",
-    "pkg/tools",
   ]
   pruneopts = ""
   revision = "3763d699ec598000c8095dc4d2e86a3ec0a169ff"
@@ -387,7 +386,6 @@
     "github.com/nalej/grpc-organization-go",
     "github.com/nalej/grpc-utils/pkg/conversions",
     "github.com/nalej/grpc-utils/pkg/test",
-    "github.com/nalej/grpc-utils/pkg/tools",
     "github.com/onsi/ginkgo",
     "github.com/onsi/gomega",
     "github.com/rs/zerolog",
