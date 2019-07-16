@@ -32,7 +32,7 @@ func (h * Handler) DeviceLogin(ctx context.Context, loginRequest *grpc_authx_go.
 
 	response, err := h.Manager.DeviceLogin(loginRequest)
 	if err != nil {
-		log.Error().Str("trace", conversions.ToDerror(err).DebugReport()).Msg("device login error")
+		log.Error().Str("trace", conversions.ToDerror(err).DebugReport()).Str("OrganizationId", loginRequest.OrganizationId).Str("DeviceApiKey", loginRequest.DeviceApiKey).Msg("device login error")
 		return nil, conversions.ToGRPCError(derrors.NewGenericError("Invalid device credentials"))
 	}
 	return response, nil
