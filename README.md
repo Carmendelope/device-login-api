@@ -7,8 +7,6 @@ that is launched when the server starts.
 
 ## Getting Started
 
-Any information required by the final user to use this repo.
-
 ### Prerequisites
 
 * [device-manager](https://github.com/nalej/device-manager)
