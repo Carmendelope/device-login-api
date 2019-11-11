@@ -1,23 +1,39 @@
+/*
+ * Copyright 2019 Nalej
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package login
 
 import (
 	"context"
+	"github.com/google/uuid"
 	"github.com/nalej/grpc-authx-go"
 	"github.com/nalej/grpc-device-login-api-go"
 	"github.com/nalej/grpc-utils/pkg/test"
+	"github.com/onsi/ginkgo"
+	"github.com/onsi/gomega"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/test/bufconn"
-	"github.com/onsi/ginkgo"
-	"github.com/onsi/gomega"
 	"math/rand"
-	"github.com/google/uuid"
 	"os"
 )
 
 var _ = ginkgo.Describe("Applications", func() {
 
-	var runIntegration= os.Getenv("RUN_INTEGRATION_TEST")
+	var runIntegration = os.Getenv("RUN_INTEGRATION_TEST")
 
 	if runIntegration != "true" {
 		log.Warn().Msg("Integration tests are skipped")
@@ -25,7 +41,7 @@ var _ = ginkgo.Describe("Applications", func() {
 	}
 
 	var (
-		authxAddress= os.Getenv("IT_AUTHX_ADDRESS")
+		authxAddress = os.Getenv("IT_AUTHX_ADDRESS")
 	)
 
 	if authxAddress == "" {
@@ -70,10 +86,10 @@ var _ = ginkgo.Describe("Applications", func() {
 		ginkgo.It("should be able to login", func() {
 
 			// add a group
-			groupToAdd :=grpc_authx_go.AddDeviceGroupCredentialsRequest{
+			groupToAdd := grpc_authx_go.AddDeviceGroupCredentialsRequest{
 				OrganizationId: uuid.New().String(),
-				DeviceGroupId: uuid.New().String(),
-				Enabled: true,
+				DeviceGroupId:  uuid.New().String(),
+				Enabled:        true,
 			}
 			groupAdded, err := authxClient.AddDeviceGroupCredentials(context.Background(), &groupToAdd)
 			gomega.Expect(err).To(gomega.Succeed())
@@ -82,17 +98,17 @@ var _ = ginkgo.Describe("Applications", func() {
 			// add a device
 			toAdd := grpc_authx_go.AddDeviceCredentialsRequest{
 				OrganizationId: groupToAdd.OrganizationId,
-				DeviceGroupId: groupToAdd.DeviceGroupId,
-				DeviceId:  uuid.New().String(),
+				DeviceGroupId:  groupToAdd.DeviceGroupId,
+				DeviceId:       uuid.New().String(),
 			}
 			added, err := authxClient.AddDeviceCredentials(context.Background(), &toAdd)
 			gomega.Expect(err).To(gomega.Succeed())
 			gomega.Expect(added).NotTo(gomega.BeNil())
 
 			// send a login
-			loginRequest := grpc_authx_go.DeviceLoginRequest {
+			loginRequest := grpc_authx_go.DeviceLoginRequest{
 				OrganizationId: toAdd.OrganizationId,
-				DeviceApiKey: added.DeviceApiKey,
+				DeviceApiKey:   added.DeviceApiKey,
 			}
 			loginResponse, err := client.DeviceLogin(context.Background(), &loginRequest)
 			gomega.Expect(err).To(gomega.Succeed())
@@ -102,10 +118,10 @@ var _ = ginkgo.Describe("Applications", func() {
 		ginkgo.It("should not be able to login, wrong api_key", func() {
 
 			// add a group
-			groupToAdd :=grpc_authx_go.AddDeviceGroupCredentialsRequest{
+			groupToAdd := grpc_authx_go.AddDeviceGroupCredentialsRequest{
 				OrganizationId: uuid.New().String(),
-				DeviceGroupId: uuid.New().String(),
-				Enabled: true,
+				DeviceGroupId:  uuid.New().String(),
+				Enabled:        true,
 			}
 			groupAdded, err := authxClient.AddDeviceGroupCredentials(context.Background(), &groupToAdd)
 			gomega.Expect(err).To(gomega.Succeed())
@@ -114,17 +130,17 @@ var _ = ginkgo.Describe("Applications", func() {
 			// add a device
 			toAdd := grpc_authx_go.AddDeviceCredentialsRequest{
 				OrganizationId: groupToAdd.OrganizationId,
-				DeviceGroupId: groupToAdd.DeviceGroupId,
-				DeviceId:  uuid.New().String(),
+				DeviceGroupId:  groupToAdd.DeviceGroupId,
+				DeviceId:       uuid.New().String(),
 			}
 			added, err := authxClient.AddDeviceCredentials(context.Background(), &toAdd)
 			gomega.Expect(err).To(gomega.Succeed())
 			gomega.Expect(added).NotTo(gomega.BeNil())
 
 			// send a login
-			loginRequest := grpc_authx_go.DeviceLoginRequest {
+			loginRequest := grpc_authx_go.DeviceLoginRequest{
 				OrganizationId: toAdd.OrganizationId,
-				DeviceApiKey: uuid.New().String(),
+				DeviceApiKey:   uuid.New().String(),
 			}
 			_, err = client.DeviceLogin(context.Background(), &loginRequest)
 			gomega.Expect(err).NotTo(gomega.Succeed())

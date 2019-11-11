@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 Nalej
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package server
 
 import (
@@ -8,8 +24,8 @@ import (
 	"github.com/nalej/device-login-api/internal/pkg/server/login"
 	"github.com/nalej/device-login-api/internal/pkg/server/register"
 	"github.com/nalej/grpc-authx-go"
-	"github.com/nalej/grpc-device-manager-go"
 	"github.com/nalej/grpc-device-login-api-go"
+	"github.com/nalej/grpc-device-manager-go"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -30,18 +46,18 @@ func NewService(conf Config) *Service {
 }
 
 type Clients struct {
-	devManager grpc_device_manager_go.DevicesClient
+	devManager   grpc_device_manager_go.DevicesClient
 	authxManager grpc_authx_go.AuthxClient
 }
 
-func (s * Service) GetClients() (* Clients, derrors.Error) {
+func (s *Service) GetClients() (*Clients, derrors.Error) {
 
 	devConn, err := grpc.Dial(s.Configuration.DeviceManagerAddress, grpc.WithInsecure())
-	if err != nil{
+	if err != nil {
 		return nil, derrors.AsError(err, "cannot create connection with the device manager")
 	}
 	authxConn, err := grpc.Dial(s.Configuration.AuthxAddress, grpc.WithInsecure())
-	if err != nil{
+	if err != nil {
 		return nil, derrors.AsError(err, "cannot create connection with the authx manager")
 	}
 
@@ -51,7 +67,7 @@ func (s * Service) GetClients() (* Clients, derrors.Error) {
 	return &Clients{dClient, aClient}, nil
 }
 
-func (s * Service) Run () error {
+func (s *Service) Run() error {
 	vErr := s.Configuration.Validate()
 	if vErr != nil {
 		log.Fatal().Str("err", vErr.DebugReport()).Msg("invalid configuration")
@@ -64,7 +80,7 @@ func (s * Service) Run () error {
 
 }
 
-func (s * Service) LaunchGRPC() error {
+func (s *Service) LaunchGRPC() error {
 	clients, cErr := s.GetClients()
 	if cErr != nil {
 		log.Fatal().Str("err", cErr.DebugReport()).Msg("cannot generate clients")
@@ -115,7 +131,7 @@ func preflightHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Methods", strings.Join(methods, ","))
 }
 
-func (s * Service) LaunchHTTP() error {
+func (s *Service) LaunchHTTP() error {
 
 	addr := fmt.Sprintf(":%d", s.Configuration.HTTPPort)
 	clientAddr := fmt.Sprintf(":%d", s.Configuration.Port)
@@ -125,7 +141,7 @@ func (s * Service) LaunchHTTP() error {
 	if err := grpc_device_login_api_go.RegisterLoginHandlerFromEndpoint(context.Background(), mux, clientAddr, opts); err != nil {
 		log.Fatal().Err(err).Msg("failed to start device manager handler")
 	}
-	if err := grpc_device_login_api_go.RegisterRegisterHandlerFromEndpoint(context.Background(), mux, clientAddr, opts) ; err != nil{
+	if err := grpc_device_login_api_go.RegisterRegisterHandlerFromEndpoint(context.Background(), mux, clientAddr, opts); err != nil {
 		log.Fatal().Err(err).Msg("failed to start authx manager handler")
 	}
 
