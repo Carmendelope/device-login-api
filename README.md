@@ -2,6 +2,9 @@
 
 Component in charge of login and registration of devices.
 
+Notice that the public api supports REST and gRPC request by means of the [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway)
+that is launched when the server starts.
+
 ## Getting Started
 
 Any information required by the final user to use this repo.
