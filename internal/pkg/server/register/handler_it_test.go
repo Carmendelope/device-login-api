@@ -33,7 +33,6 @@ import (
 	"os"
 )
 
-
 var _ = ginkgo.Describe("Devices", func() {
 
 	var runIntegration = os.Getenv("RUN_INTEGRATION_TEST")
@@ -44,8 +43,8 @@ var _ = ginkgo.Describe("Devices", func() {
 	}
 
 	var (
-		devManagerAddress = os.Getenv("IT_DEV_MNG_ADDRESS")
-		systemModelAddress= os.Getenv("IT_SM_ADDRESS")
+		devManagerAddress  = os.Getenv("IT_DEV_MNG_ADDRESS")
+		systemModelAddress = os.Getenv("IT_SM_ADDRESS")
 	)
 
 	if systemModelAddress == "" || devManagerAddress == "" {
@@ -54,7 +53,6 @@ var _ = ginkgo.Describe("Devices", func() {
 
 	var devManagerClient grpc_device_manager_go.DevicesClient
 	var orgClient grpc_organization_go.OrganizationsClient
-
 
 	var server *grpc.Server
 	var listener *bufconn.Listener
@@ -84,8 +82,6 @@ var _ = ginkgo.Describe("Devices", func() {
 		client = grpc_device_login_api_go.NewRegisterClient(conn)
 		rand.Seed(ginkgo.GinkgoRandomSeed())
 
-
-
 	})
 
 	ginkgo.AfterSuite(func() {
@@ -94,7 +90,7 @@ var _ = ginkgo.Describe("Devices", func() {
 	})
 
 	ginkgo.Context("register", func() {
-		var targetOrganization * grpc_organization_go.Organization
+		var targetOrganization *grpc_organization_go.Organization
 		testHelper := utils.NewDeviceTestHepler()
 
 		ginkgo.BeforeEach(func() {

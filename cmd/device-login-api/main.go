@@ -30,4 +30,3 @@ func main() {
 	version.Commit = MainCommit
 	commands.Execute()
 }
-

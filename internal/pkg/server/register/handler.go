@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Nalej
  *
@@ -30,11 +29,11 @@ type Handler struct {
 }
 
 // NewHandler creates a new Handler with a linked manager.
-func NewHandler(manager Manager) *Handler{
+func NewHandler(manager Manager) *Handler {
 	return &Handler{manager}
 }
 
-func (h * Handler) RegisterDevice(context context.Context, registerRequest *grpc_device_manager_go.RegisterDeviceRequest) (*grpc_device_manager_go.RegisterResponse, error) {
+func (h *Handler) RegisterDevice(context context.Context, registerRequest *grpc_device_manager_go.RegisterDeviceRequest) (*grpc_device_manager_go.RegisterResponse, error) {
 	vErr := entities.ValidRegisterRequest(registerRequest)
 
 	if vErr != nil {

@@ -18,21 +18,20 @@ package commands
 
 import (
 	"fmt"
+	"github.com/nalej/device-login-api/version"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 	"os"
-	"github.com/nalej/device-login-api/version"
-
 )
 
 var debugLevel bool
 var consoleLogging bool
 
 var rootCmd = &cobra.Command{
-	Use:   "device-login-api",
-	Short: "Device Login API component",
-	Long:  `The device Login API provides a public API dedicated to login and register external devices.`,
+	Use:     "device-login-api",
+	Short:   "Device Login API component",
+	Long:    `The device Login API provides a public API dedicated to login and register external devices.`,
 	Version: "unknown-version",
 
 	Run: func(cmd *cobra.Command, args []string) {

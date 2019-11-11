@@ -23,10 +23,10 @@ import (
 )
 
 const (
-	emptyOrganizationId = "organization_id cannot be empty"
-	emptyDeviceId = "device_id cannot be empty"
-	emptyDeviceGroupId = "device_id cannot be empty"
-	emptyDeviceApiKey = "device_api_key cannot be empty"
+	emptyOrganizationId    = "organization_id cannot be empty"
+	emptyDeviceId          = "device_id cannot be empty"
+	emptyDeviceGroupId     = "device_id cannot be empty"
+	emptyDeviceApiKey      = "device_api_key cannot be empty"
 	emptyDeviceGroupApiKey = "device_group_api_key cannot be empty"
 )
 
@@ -45,7 +45,7 @@ func ValidLoginRequest(loginRequest *grpc_authx_go.DeviceLoginRequest) derrors.E
 
 }
 
-func ValidRegisterRequest(registerRequest *grpc_device_manager_go.RegisterDeviceRequest) derrors.Error  {
+func ValidRegisterRequest(registerRequest *grpc_device_manager_go.RegisterDeviceRequest) derrors.Error {
 	// OrganizationId
 	if registerRequest.OrganizationId == "" {
 		return derrors.NewInvalidArgumentError(emptyOrganizationId)

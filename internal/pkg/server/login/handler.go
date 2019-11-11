@@ -30,12 +30,11 @@ type Handler struct {
 }
 
 // NewHandler creates a new Handler with a linked manager.
-func NewHandler(manager Manager) *Handler{
+func NewHandler(manager Manager) *Handler {
 	return &Handler{manager}
 }
 
-
-func (h * Handler) DeviceLogin(ctx context.Context, loginRequest *grpc_authx_go.DeviceLoginRequest) (*grpc_authx_go.LoginResponse, error) {
+func (h *Handler) DeviceLogin(ctx context.Context, loginRequest *grpc_authx_go.DeviceLoginRequest) (*grpc_authx_go.LoginResponse, error) {
 	vErr := entities.ValidLoginRequest(loginRequest)
 
 	if vErr != nil {

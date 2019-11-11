@@ -33,7 +33,7 @@ type Config struct {
 	DeviceManagerAddress string
 }
 
-func (conf * Config) Validate() derrors.Error {
+func (conf *Config) Validate() derrors.Error {
 
 	if conf.Port <= 0 || conf.HTTPPort <= 0 {
 		return derrors.NewInvalidArgumentError("ports must be valid")
@@ -48,7 +48,7 @@ func (conf * Config) Validate() derrors.Error {
 	return nil
 }
 
-func (conf * Config) Print()  {
+func (conf *Config) Print() {
 	log.Info().Str("app", version.AppVersion).Str("commit", version.Commit).Msg("Version")
 	log.Info().Int("port", conf.Port).Msg("gRPC port")
 	log.Info().Int("port", conf.HTTPPort).Msg("HTTP port")

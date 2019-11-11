@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Nalej
  *
@@ -15,7 +14,7 @@
  * limitations under the License.
  */
 
- package register
+package register
 
 import (
 	"context"
@@ -29,10 +28,9 @@ type Manager struct {
 
 // NewManager creates a Manager using a set of clients.
 func NewManager(accessClient grpc_device_manager_go.DevicesClient) Manager {
-	return Manager{devManager:accessClient}
+	return Manager{devManager: accessClient}
 }
 
-func (m * Manager) RegisterDevice (registerRequest *grpc_device_manager_go.RegisterDeviceRequest) (*grpc_device_manager_go.RegisterResponse, error) {
+func (m *Manager) RegisterDevice(registerRequest *grpc_device_manager_go.RegisterDeviceRequest) (*grpc_device_manager_go.RegisterResponse, error) {
 	return m.devManager.RegisterDevice(context.Background(), registerRequest)
 }
-
