@@ -8,7 +8,6 @@
     "device-login-api"
   ],
   "tools": [
-    "azure",
     "k8s",
     "docker"
   ]
