@@ -8,6 +8,9 @@
   "image_list": [
     "device-login-api"
   ],
+  "component_list": [
+    "device-login-api"
+  ],
   "tools": [
     "k8s",
     "docker"
