@@ -1,6 +1,6 @@
 # device-login-api
 
-Component in charge of login and registration of devices. Notice that the public api supports REST and gRPC requests through the [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) that is launched when the server starts.
+Component in charge of login and registration of devices. Notice that the device login api supports REST and gRPC requests through the [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) that is launched when the server starts.
 
 ## Getting Started
 
